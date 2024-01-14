@@ -1,0 +1,109 @@
+:root {
+  --body-bg: #123;
+  --nav-bg: rgb(69, 92, 115);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: system-ui;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-size: 1.25rem;
+  background: var(--body-bg);
+  color: white;
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  gap: 4rem;
+}
+
+nav {
+  background-color: var(--nav-bg);
+  position: sticky;
+  top: 0;
+  height: 100svh;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  display: grid;
+  gap: 2rem;
+  padding-block: 2rem;
+}
+
+.nav-list li {
+  padding: 1.5rem 2rem;
+  margin-left: 1rem;
+  border-radius: 100vw 0 0 100vw;
+}
+
+.nav-list li.active {
+  view-transition-name: activeNavTab;
+  background: var(--body-bg);
+  position: relative;
+  /* box-shadow: 0 4px 8px -4px var(--body-bg); */
+}
+
+::view-transition-group(activeNavTab) {
+  animation-duration: 0.5s;
+}
+
+.nav-list li.active::before,
+.nav-list li.active::after {
+  --border-radius: 1rem;
+
+  content: "";
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  right: 0;
+  background: var(--nav-bg);
+}
+
+.nav-list li.active::before {
+  top: calc(var(--border-radius) * -1);
+  box-shadow: 15px 15px 0 15px var(--body-bg);
+  border-radius: 0 0 100vw 0;
+}
+
+.nav-list li.active::after {
+  bottom: calc(var(--border-radius) * -1);
+  border-radius: 0 100vw 0 0;
+  box-shadow: 15px -15px 0 15px var(--body-bg);
+}
+
+.nav-list a {
+  color: white;
+  text-decoration: none;
+}
+
+.div {
+  height: 65vh;
+  width: 50vw;
+  background-color: #7299bf;
+}
+
+h2 {
+  margin-bottom: 0;
+  padding-bottom: 0.5rem;
+}
+
+main {
+  padding-bottom: 4rem;
+}
+
+h1 {
+    view-transition-name: activeHeader;
+}
+
+::view-transition-group(activeHeader) {
+    animation-duration: .5s;
+  }
